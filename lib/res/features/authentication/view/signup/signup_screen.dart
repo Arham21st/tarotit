@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/constants/routes/routes.dart';
+import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
+import 'package:tarotit/res/features/authentication/view/welcome/welcome_screen.dart';
+import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
 import 'package:tarotit/res/navigator/navigator.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupScreenState extends State<SignupScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   @override
@@ -24,7 +27,8 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: Dimensions.screenHeight*0.95,
+              // height: Dimensions.screenHeight*0.95,
+        
             padding: EdgeInsets.symmetric(vertical: Dimensions.height20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,49 +36,57 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Column(
                   children: [
-                    SizedBox(height: Dimensions.height20*3,),
-                     Image(image: const AssetImage("assets/images/opus_logo.png"),
-                     color: persimmon,height: Dimensions.height20*7),
-                    SizedBox(height: Dimensions.height20*2,),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        padding: EdgeInsets.only(left: Dimensions.height20),
-                        child:  Text( "Login",style: TextStyle(fontSize: Dimensions.height25),)
-                      ),
+                    SizedBox(height: Dimensions.height20,),
+                       Image(image: const AssetImage("assets/images/opus_logo.png"),
+                       color: persimmon,height: Dimensions.height20*7),
+                    SizedBox(height: Dimensions.height20,),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: Dimensions.height20),
+                          child:  Text( "Sign Up",style: TextStyle(fontSize: Dimensions.height25),)
+                        )
+                      ],
                     ),
                     SizedBox(height: Dimensions.height10),
-                    const AppInput(placeHolder: 'Email'),
-                    SizedBox(height: Dimensions.height10,),
+                    const AppInput(placeHolder: 'Umar sufiyan',
+                    label: 'Username',),
+                    const AppInput(placeHolder: 'example@gmail.com',
+                    label: 'Email',),
+                    const AppInput(placeHolder: '03001234567',
+                    label: 'Phone No',),
                     const AppInput(placeHolder: 'Password',
-                    obscureText: true,),
+                    obscureText: true,
+                    label: 'Password',),
+                    const AppInput(placeHolder: 'Karachi',
+                    label: 'City',),
+                    const AppInput(placeHolder: 'Location',
+                    label: 'Location',
+                    postfixIcon: Icon(Icons.location_on_outlined)),
                     SizedBox(height: Dimensions.height10,),
                     SizedBox(
                       width: Dimensions.screenWidth,
                       child: AppButton(
-                        text: 'Login', btnColor: codGray, onTap: () {
+                        
+                        text: 'Sign up',btnColor: codGray, onTap: () {
                           replaceWithNamedNavigator(context, routeName: chooseServiceRoute);
-                      },),
+                        },),
                     ),
                   ],
                 ),
-          
                 // Align(
                 //   alignment: Alignment.bottomCenter,
                 //   child: Row(
                 //     mainAxisAlignment: MainAxisAlignment.center,
                 //     children: [
-                //       const Text('Don\'t have an account?',style: TextStyle(color: codGray),),
+                //       const Text('Already have an account?',style: TextStyle(color: codGray),),
                 //       GestureDetector(
                 //         onTap: () {
-                //           pushScreen(context, const SignupScreen());
+                //           pushScreen(context, const SplashScreen());
                 //         },
                 //         child: Padding(
                 //           padding: EdgeInsets.all(Dimensions.height10),
-                //           child: const Text('Sign up',
-                //           style: TextStyle(
-                //             color: codGray,
-                //             fontWeight: FontWeight.bold),),
+                //           child: const Text('Login',style: TextStyle(color: codGray,fontWeight: FontWeight.bold),),
                 //         ),
                 //       )
                 //     ],
@@ -85,5 +97,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         )),
     );
+ 
   }
 }
