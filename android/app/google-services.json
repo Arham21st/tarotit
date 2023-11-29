@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "123382789346",
+    "project_id": "opus-aff50",
+    "storage_bucket": "opus-aff50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123382789346:android:82ce265aa01685fba99abb",
+        "android_client_info": {
+          "package_name": "com.example.tarotit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123382789346-d55qsf8rqsqt8l009uvo2s03p0qgah5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tarotit",
+            "certificate_hash": "fce3b43c7668b279a659a7d5081be22071b18bd0"
+          }
+        },
+        {
+          "client_id": "123382789346-9but7kbgsg9ptaui6fdeo60vn6ualunu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjW8vjBCdk2tPpz2MieySdIOLqw2DstFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123382789346-9but7kbgsg9ptaui6fdeo60vn6ualunu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "123382789346-qhfda0u16msej1clphur2c2dci0ntoqk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tarotit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

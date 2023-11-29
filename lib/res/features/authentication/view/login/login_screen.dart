@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/constants/routes/routes.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
+import 'package:tarotit/res/features/authentication/controllers/firebase/firebase_controller.dart';
+import 'package:tarotit/res/features/authentication/controllers/signin/signin_controller.dart';
+import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
+import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -18,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   var passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final controller= Get.put(SignInController());
     return Scaffold(
       //backgroundColor: AppColors.background,
       backgroundColor:Colors.white,
@@ -53,33 +57,35 @@ class _LoginPageState extends State<LoginPage> {
                       width: Dimensions.screenWidth,
                       child: AppButton(
                         text: 'Login', btnColor: codGray, onTap: () {
-                          replaceWithNamedNavigator(context, routeName: chooseServiceRoute);
+                          Get.offAll(()=>const ChooseService());
                       },),
                     ),
                   ],
                 ),
           
-                // Align(
-                //   alignment: Alignment.bottomCenter,
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       const Text('Don\'t have an account?',style: TextStyle(color: codGray),),
-                //       GestureDetector(
-                //         onTap: () {
-                //           pushScreen(context, const SignupScreen());
-                //         },
-                //         child: Padding(
-                //           padding: EdgeInsets.all(Dimensions.height10),
-                //           child: const Text('Sign up',
-                //           style: TextStyle(
-                //             color: codGray,
-                //             fontWeight: FontWeight.bold),),
-                //         ),
-                //       )
-                //     ],
-                //   ),
-                // )
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Don\'t have an account?',style: TextStyle(color: codGray),),
+                      GestureDetector(
+                        onTap: () {
+                          SignInController.instance.signIn(controller.email.text.trim(), 
+                          controller.password.text.trim());
+                          // Get.off(()=> const SignupScreen());
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.all(Dimensions.height10),
+                          child: const Text('Sign up',
+                          style: TextStyle(
+                            color: codGray,
+                            fontWeight: FontWeight.bold),),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:sizer/sizer.dart';
+import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
 import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
 import 'package:tarotit/res/features/authentication/view/signupAsSP/signup_as_sp.dart';
@@ -20,21 +21,22 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
       child: Sizer(builder: (_, orientation, deviceType) {
-        return GetMaterialApp(
+        return const GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'SIRS2023',
-          initialRoute: '/',
-          routes: {
-            indexRoute: (ctx) => const SplashScreen(),
-            signupOptionRoute: (ctx) => const SignupOptionScreen(),
-            signupRoute: (ctx) => const SignupScreen(),
-            signupAsSpRoute: (ctx) => const SignupAsServiceProvider(),
-            loginRoute: (ctx) => const LoginPage(),
-            layoutRoute: (ctx) => const LayoutWithNavbar(),
-            chooseServiceRoute: (ctx) => const ChooseService(),
-            serviceListRoute: (ctx) => const ServiceListScreen(service: ''),
-            // industryRoute: (ctx) => const IndustryList(),
-          },
+          title: 'OPUS',
+          // initialRoute: '/',
+          home: SplashScreen()
+          // routes: {
+          //   indexRoute: (ctx) => const SplashScreen(),
+          //   signupOptionRoute: (ctx) => const SignupOptionScreen(),
+          //   signupRoute: (ctx) => const SignupScreen(),
+          //   signupAsSpRoute: (ctx) => const SignupAsServiceProvider(),
+          //   loginRoute: (ctx) => const LoginPage(),
+          //   layoutRoute: (ctx) => const LayoutWithNavbar(),
+          //   chooseServiceRoute: (ctx) => const ChooseService(),
+          //   serviceListRoute: (ctx) => const ServiceListScreen(service: ''),
+          //   // industryRoute: (ctx) => const IndustryList(),
+          // },
         );
       }),
     );

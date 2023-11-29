@@ -33,35 +33,24 @@ class _ChooseServiceState extends State<ChooseService> {
       // showBackButton: true,
       text: 'Choose a service',
       centerTitle: true),
-      body: Column(children: [
-        // Container(
-        //   padding: EdgeInsets.symmetric(vertical: Dimensions.height20),
-        //   child: Text('Choose a service',style: TextStyle(
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: Dimensions.height20
-        //   ),),
-        // ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: Dimensions.height20,),
-            child: Expanded(
-              child: SizedBox(
-                height: Dimensions.screenHeight*0.75,
-                child: GridView.builder(
-                      itemCount: serviceData.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        
-                childAspectRatio: 0.9,
-                crossAxisCount: 3), itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      pushScreen(context,  ServiceListScreen(service: serviceData[index]['service_title'].toString(),));
-                    },
-                    child: ServiceWidget(serviceData: serviceData[index]));
-                },),
-              ),
-            ),
-          )
-      ],),
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: Dimensions.height20,),
+        child: SizedBox(
+          height: Dimensions.screenHeight*0.75,
+          child: GridView.builder(
+                itemCount: serviceData.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  
+          childAspectRatio: 0.9,
+          crossAxisCount: 3), itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                pushScreen(context,  ServiceListScreen(service: serviceData[index]['service_title'].toString(),));
+              },
+              child: ServiceWidget(serviceData: serviceData[index]));
+          },),
+        ),
+      ),
     );
   }
 }

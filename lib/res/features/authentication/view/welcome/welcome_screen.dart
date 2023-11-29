@@ -1,10 +1,7 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/constants/routes/routes.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -35,10 +32,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
       
 
-    Timer(
-      const Duration(seconds: 3),
-      () => replaceWithNamedNavigator(context, routeName: signupOptionRoute)
-    );
+    
 
   }
   
@@ -46,12 +40,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        bottom: false,
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(image: 
             AssetImage('assets/images/opus_background.png',),
-            colorFilter: ColorFilter.mode(codGray, BlendMode.hardLight)
+            colorFilter: ColorFilter.mode(codGray, BlendMode.color)
             ),
           ),
           child: Column(
@@ -59,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
             children: [
               ScaleTransition(scale: animation,
               child: Center(child: Image.asset("assets/images/opus_logo.png",
-              color: persimmon,
+              color: gallery,
               width: Dimensions.height25*5,),),),
             ],
           ),

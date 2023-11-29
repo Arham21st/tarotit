@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
+import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
+import 'package:tarotit/res/navigator/navigator.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,50 +31,55 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: Dimensions.screenWidth*0.43,
-                      child: Container(
-                        padding: EdgeInsets.all(Dimensions.height10),
-                        decoration: BoxDecoration(
-                          color: codGray,
-                          borderRadius: BorderRadius.circular(Dimensions.height15)
+                    GestureDetector(
+                      onTap: () {
+                        pushScreen(context, const BookingScreen());
+                      },
+                      child: SizedBox(
+                        width: Dimensions.screenWidth*0.43,
+                        child: Container(
+                          padding: EdgeInsets.all(Dimensions.height10),
+                          decoration: BoxDecoration(
+                            color: codGray,
+                            borderRadius: BorderRadius.circular(Dimensions.height15)
+                          ),
+                          child: Column(
+                            children:  [
+                              Row(
+                                children: [
+                                  const Icon(CupertinoIcons.briefcase,color: dinGray,
+                                  ),
+                                  SizedBox(width: Dimensions.height10,),
+                                  Text('Bookings',style: TextStyle(
+                                    fontSize: Dimensions.height20,
+                                    color: dinGray
+                                  ),),
+                                ],
+                              ),
+                              SizedBox(
+                                height: Dimensions.height20,
+                              ),
+                              Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,                         
+                                 children: [
+                                  Text('3',style: TextStyle(
+                                        fontSize: Dimensions.height20,
+                                        fontWeight: FontWeight.bold,
+                                        color: chateauGreen
+                                      ),),
+                                  SizedBox(width: Dimensions.height5,),
+                    
+                                      Text('active jobs',style: TextStyle(
+                                        fontSize: Dimensions.height35/2,
+                                        color: dinGray
+                                      ),),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        child: Column(
-                          children:  [
-                            Row(
-                              children: [
-                                const Icon(CupertinoIcons.briefcase,color: dinGray,
-                                ),
-                                SizedBox(width: Dimensions.height10,),
-                                Text('Bookings',style: TextStyle(
-                                  fontSize: Dimensions.height20,
-                                  color: dinGray
-                                ),),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Dimensions.height20,
-                            ),
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,                         
-                               children: [
-                                Text('3',style: TextStyle(
-                                      fontSize: Dimensions.height20,
-                                      fontWeight: FontWeight.bold,
-                                      color: chateauGreen
-                                    ),),
-                                SizedBox(width: Dimensions.height5,),
-
-                                    Text('active jobs',style: TextStyle(
-                                      fontSize: Dimensions.height35/2,
-                                      color: dinGray
-                                    ),),
-                              ],
-                            ),
-                          ],
-                        ),
+                                        
                       ),
-                                      
                     ),
                     SizedBox(
                       width: Dimensions.screenWidth*0.43,
