@@ -8,12 +8,14 @@ class AppButton extends StatelessWidget {
  this.textColor,
     required this.btnColor,
     required this.onTap,
+    this.loading=false,
     super.key,
   });
   final String text;
   final Color? textColor;
   final Color btnColor;
   final VoidCallback onTap;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +36,14 @@ class AppButton extends StatelessWidget {
           backgroundColor: MaterialStatePropertyAll(btnColor),
         ),
         onPressed: onTap,
-        child: Text(
+        child: !loading? Text(
           text,
           style: TextStyle(
             color: textColor??dinGray,
             // fontFamily: interSemibold,
             fontSize: Dimensions.height15,
           ),
-        ),
+        ):const CircularProgressIndicator(),
       ),
     );
   }

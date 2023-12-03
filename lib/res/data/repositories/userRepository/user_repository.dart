@@ -10,8 +10,9 @@ class UserRepository extends GetxController{
 
 
 
+
   createUser(UserModel user) async {
-    await _db.collection("Users").doc().set(user.toJson()).whenComplete(
+    await _db.collection("Users").doc(user.id).set(user.toJson()).whenComplete(
       () => Get.snackbar('Success', 'Your account has been created.',snackPosition: SnackPosition.BOTTOM)).
       catchError((error, stackTrace){
         Get.snackbar('Error', 'Something went wrong. Try again.',snackPosition: SnackPosition.BOTTOM);

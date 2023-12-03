@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
+import 'package:tarotit/res/features/authentication/controllers/firebase/firebase_controller.dart';
+import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
 import 'package:tarotit/res/features/core/view/chooseService/widgets/service_list.dart';
 import 'package:tarotit/res/features/core/view/chooseService/widgets/service_widget.dart';
 import 'package:tarotit/res/navigator/navigator.dart';
@@ -27,10 +30,12 @@ class _ChooseServiceState extends State<ChooseService> {
     ] ;
     return Scaffold(
       appBar: customAppbar(onTap: () {
-        
+        FirebaseController.instance.logoutUser();
+        Get.offAll(()=>const LoginPage());
       },
+
       isBold: true,
-      // showBackButton: true,
+      showBackButton: true,
       text: 'Choose a service',
       centerTitle: true),
       body: Container(

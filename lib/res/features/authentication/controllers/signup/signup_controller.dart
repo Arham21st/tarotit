@@ -11,17 +11,24 @@ class SignupController extends GetxController{
 
   final userRepo = Get.put(UserRepository());
 
+  
+
+
   final email = TextEditingController();
   final password = TextEditingController();
   final userName = TextEditingController();
   final phoneNo = TextEditingController();
 
 
-  void signUp(String email,String password){
+  void signUp(String email,String password,UserModel user){
 
-      FirebaseController.instance.createUserWithEmailAndPassword(email, password);
+      FirebaseController.instance.createUserWithEmailAndPassword(email, password)
+      .then((value) {
+        createUser(user);
+      }).onError((error, stackTrace){
+        Get.snackbar('Error', 'Sign Up Failed');
+      });
 
-    // Get.offAll(()=>const ChooseService());
 
 
   }
@@ -29,7 +36,7 @@ class SignupController extends GetxController{
   Future<void> createUser(UserModel user)async{
     await userRepo.createUser(user);
     // phoneAuthentication(user.phoneNo);
-    Get.offAll(()=>const ChooseService());
+    // Get.offAll(()=>const ChooseService());
   }
 
   void phoneAuthentication(String phoneNo){

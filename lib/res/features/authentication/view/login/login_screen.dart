@@ -57,6 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                       width: Dimensions.screenWidth,
                       child: AppButton(
                         text: 'Login', btnColor: codGray, onTap: () {
+                          SignInController.instance.signIn(controller.email.text.trim(), 
+                          controller.password.text.trim());
                           Get.offAll(()=>const ChooseService());
                       },),
                     ),
@@ -71,9 +73,8 @@ class _LoginPageState extends State<LoginPage> {
                       const Text('Don\'t have an account?',style: TextStyle(color: codGray),),
                       GestureDetector(
                         onTap: () {
-                          SignInController.instance.signIn(controller.email.text.trim(), 
-                          controller.password.text.trim());
-                          // Get.off(()=> const SignupScreen());
+                          
+                          Get.off(()=> const SignupScreen());
                         },
                         child: Padding(
                           padding: EdgeInsets.all(Dimensions.height10),

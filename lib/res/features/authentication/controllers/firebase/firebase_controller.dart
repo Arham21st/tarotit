@@ -6,7 +6,6 @@ import 'package:tarotit/res/exceptions/signup_with_email_and_pass_failure.dart';
 import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
 import 'package:tarotit/res/features/authentication/view/welcome/welcome_screen.dart';
 import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
-import 'package:tarotit/res/features/core/view/home/home.dart';
 import 'package:tarotit/res/utils/utils.dart';
 
 class FirebaseController extends GetxController{

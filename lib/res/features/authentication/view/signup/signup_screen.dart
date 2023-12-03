@@ -1,15 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/constants/routes/routes.dart';
 import 'package:tarotit/res/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:tarotit/res/features/authentication/models/user/user_model.dart';
 import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
-import 'package:tarotit/res/features/authentication/view/welcome/welcome_screen.dart';
-import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
-import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -21,12 +17,22 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+
+  final firestore = FirebaseFirestore.instance.collection('Users');
+
+  bool loading =false;
   @override
   Widget build(BuildContext context) {
 
     final controller = Get.put(SignupController());
 
     final _formKey = GlobalKey<FormState>();
+
+    
+
+  String id = DateTime.now().millisecondsSinceEpoch.toString();
+
+
 
     return Scaffold(
       //backgroundColor: AppColors.background,
@@ -83,18 +89,46 @@ class _SignupScreenState extends State<SignupScreen> {
                       SizedBox(
                         width: Dimensions.screenWidth,
                         child: AppButton(
+                          loading: loading,
+                          
                           
                           text: 'Sign up',btnColor: codGray, onTap: () {
 
-                            if(_formKey.currentState!.validate()){
-                              SignupController.instance.signUp(controller.email.value.text.trim(), controller.password.value.text.trim());
+                            setState(() {
+                              loading= true;
+                            });
 
-                    //         final user = UserModel(
-                    // fullName: controller.userName.text.trim(), 
-                    // email: controller.email.text.trim(), 
-                    // phoneNo: controller.phoneNo.text.trim(), 
-                    // password: controller.password.text.trim());
-                    //         SignupController.instance.createUser(user);
+                            if(_formKey.currentState!.validate()){
+                              // firestore.doc(id).set({
+                              //   'id' : id,
+                              //   'email' : controller.email.value.text.trim(),
+                              //   'user_name' : controller.userName.value.text.trim(),
+                              //   'phone_no' : controller.phoneNo.value.text.trim(),
+                              //   'password' : controller.password.value.text.trim(),
+                              // }).then((value) {
+                              //   setState(() {
+                              //     loading = false;
+                              //   });
+                              //   SignupController.instance.signUp(
+                              //   controller.email.value.text.trim(), 
+                              //   controller.password.value.text.trim());
+                              // }).onError((error, stackTrace) {
+                              //   setState(() {
+                              //     loading = false;
+                              //   });
+                              //   Get.snackbar('Error', error.toString());
+
+                              // });
+                              
+
+
+                            final user = UserModel(
+                    id : id,
+                    userName: controller.userName.text.trim(), 
+                    email: controller.email.text.trim(), 
+                    phoneNo: controller.phoneNo.text.trim(), 
+                    password: controller.password.text.trim());
+                            SignupController.instance.signUp(controller.email.text.trim(), controller.password.text.trim(), user);
                             }
                             // Get.to(const ChooseService());
                           },),
