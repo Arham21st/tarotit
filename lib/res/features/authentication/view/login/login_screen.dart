@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/features/authentication/controllers/firebase/firebase_controller.dart';
 import 'package:tarotit/res/features/authentication/controllers/signin/signin_controller.dart';
 import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
-import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
+import 'package:tarotit/res/features/core/view/home/home.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -24,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     final controller= Get.put(SignInController());
     return Scaffold(
       //backgroundColor: AppColors.background,
-      backgroundColor:Colors.white,
+      backgroundColor:codGray,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -44,7 +43,9 @@ class _LoginPageState extends State<LoginPage> {
                       alignment: Alignment.centerLeft,
                       child: Container(
                         padding: EdgeInsets.only(left: Dimensions.height20),
-                        child:  Text( "Login",style: TextStyle(fontSize: Dimensions.height25),)
+                        child:  Text( "Login",style: TextStyle(
+                          color: persimmon,
+                          fontSize: Dimensions.height25),)
                       ),
                     ),
                     SizedBox(height: Dimensions.height10),
@@ -56,10 +57,10 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       width: Dimensions.screenWidth,
                       child: AppButton(
-                        text: 'Login', btnColor: codGray, onTap: () {
+                        text: 'Login', btnColor: persimmon, onTap: () {
                           SignInController.instance.signIn(controller.email.text.trim(), 
                           controller.password.text.trim());
-                          Get.offAll(()=>const ChooseService());
+                          Get.offAll(()=>const HomeScreen());
                       },),
                     ),
                   ],
@@ -67,24 +68,24 @@ class _LoginPageState extends State<LoginPage> {
           
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Don\'t have an account?',style: TextStyle(color: codGray),),
-                      GestureDetector(
-                        onTap: () {
+                  child: GestureDetector(
+                    onTap: () {
                           
                           Get.off(()=> const SignupScreen());
                         },
-                        child: Padding(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Don\'t have an account?',style: TextStyle(color: persimmon),),
+                        Padding(
                           padding: EdgeInsets.all(Dimensions.height10),
                           child: const Text('Sign up',
                           style: TextStyle(
-                            color: codGray,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],

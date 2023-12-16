@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/constants/routes/routes.dart';
-import 'package:tarotit/res/features/authentication/view/welcome/welcome_screen.dart';
-import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
+import 'package:tarotit/res/features/core/view/home/home.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -14,8 +12,8 @@ class SignupAsServiceProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      //backgroundColor: AppColors.background,
-      backgroundColor:Colors.white,
+      // backgroundColor: AppColors.background,
+      backgroundColor:codGray,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -36,7 +34,9 @@ class SignupAsServiceProvider extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: Dimensions.height20),
-                          child:  Text( "Sign Up",style: TextStyle(fontSize: Dimensions.height25),)
+                          child:  Text( "Sign Up",style: TextStyle(
+                            color: persimmon,
+                            fontSize: Dimensions.height25),)
                         )
                       ],
                     ),
@@ -60,8 +60,8 @@ class SignupAsServiceProvider extends StatelessWidget {
                       width: Dimensions.screenWidth,
                       child: AppButton(
                         
-                        text: 'Sign up',btnColor: codGray, onTap: () {
-                          replaceWithNamedNavigator(context, routeName: layoutRoute);
+                        text: 'Sign up',btnColor: persimmon, onTap: () {
+                          Get.offAll(()=>HomeScreen());
                         },),
                     ),
                   ],

@@ -3,7 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:tarotit/res/exceptions/signup_with_email_and_pass_failure.dart';
-import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
+import 'package:tarotit/res/features/authentication/view/signupOption/signup_option.dart';
 import 'package:tarotit/res/features/authentication/view/welcome/welcome_screen.dart';
 import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
 import 'package:tarotit/res/utils/utils.dart';
@@ -35,7 +35,7 @@ class FirebaseController extends GetxController{
 
   _setInitialScreen(User? user) {
     if(user==null){
-      Get.offAll(()=>const LoginPage());
+      Get.offAll(()=>const SigninSignupOption());
     }else{
       Get.offAll(()=>const ChooseService());
     }

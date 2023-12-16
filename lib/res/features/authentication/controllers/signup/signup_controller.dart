@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:tarotit/res/data/repositories/userRepository/user_repository.dart';
 import 'package:tarotit/res/features/authentication/controllers/firebase/firebase_controller.dart';
 import 'package:tarotit/res/features/authentication/models/user/user_model.dart';
-import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
 
 class SignupController extends GetxController{
 

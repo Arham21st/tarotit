@@ -39,23 +39,16 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: codGray,
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(image: 
-            AssetImage('assets/images/opus_background.png',),
-            colorFilter: ColorFilter.mode(codGray, BlendMode.color)
-            ),
-          ),
-          child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ScaleTransition(scale: animation,
-              child: Center(child: Image.asset("assets/images/opus_logo.png",
-              color: gallery,
-              width: Dimensions.height25*5,),),),
-            ],
-          ),
+        child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ScaleTransition(scale: animation,
+            child: Center(child: Image.asset("assets/images/opus_logo.png",
+            color: persimmon,
+            width: Dimensions.height25*5,),),),
+          ],
         ),
       ),
       

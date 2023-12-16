@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
+import 'package:tarotit/res/widgets/app_bar.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -72,16 +74,27 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     // UserModel user = Provider.of<UserModel>(context);
 
-    return SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: customAppbar(
+        showBackButton: true,
+        centerTitle: true,
+        text: 'Profile', onTap: () {
+        Get.back();
+      },),
+      body: SingleChildScrollView(
         child: Container(
-          height: Dimensions.screenHeight,
-          color: lightGray.withOpacity(0.3),
+          height: Dimensions.screenHeight*0.9,
+          // color: lightGray.withOpacity(0.3),
           padding: EdgeInsets.symmetric(
               vertical: Dimensions.height20,
               horizontal: Dimensions.height10),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              SizedBox(
+                height: Dimensions.height20,
+              ),
               Column(
                 children: [
                   CircleAvatar(
@@ -103,41 +116,45 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),)
                 ],
               ),
-              SizedBox(height: Dimensions.height25*2),
-              AppInput(
-                placeHolder: 'Choose a professsion',
-                controller: _emailEditingController,
-                label: 'Profession',
-              ),
-              AppInput(
-                placeHolder: 'Choose your expertise',
-                controller: _passwordEditingController,
-                label: 'Skills',
-                // obscureText: true,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
                 children: [
-                  Expanded(
-                    child: AppInput(
-                      placeHolder: '1000 pkr',
-                      controller: _firstNameEditingController,
-                      label: 'Base rate',
-                    ),
+                  SizedBox(height: Dimensions.height25*2),
+                  AppInput(
+                    placeHolder: 'Choose a professsion',
+                    controller: _emailEditingController,
+                    label: 'Profession',
                   ),
-                  Expanded(
-                    child: AppInput(
-                      placeHolder: '0-5 years',
-                      controller: _lastNameEditingController,
-                      label: 'Experience',
-                    ),
+                  AppInput(
+                    placeHolder: 'Choose your expertise',
+                    controller: _passwordEditingController,
+                    label: 'Skills',
+                    // obscureText: true,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: AppInput(
+                          placeHolder: '1000 pkr',
+                          controller: _firstNameEditingController,
+                          label: 'Base rate',
+                        ),
+                      ),
+                      Expanded(
+                        child: AppInput(
+                          placeHolder: '0-5 years',
+                          controller: _lastNameEditingController,
+                          label: 'Experience',
+                        ),
+                      ),
+                    ],
+                  ),
+                  AppInput(
+                    placeHolder: 'Ex:Karachi',
+                    controller: _confirmPassEditingController,
+                    label: 'City',
                   ),
                 ],
-              ),
-              AppInput(
-                placeHolder: 'Ex:Karachi',
-                controller: _confirmPassEditingController,
-                label: 'City',
               ),
 
               SizedBox(
@@ -227,6 +244,8 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       )
+   ,
+    )
     ;
   }
 }

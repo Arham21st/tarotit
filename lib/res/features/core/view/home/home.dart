@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
+import 'package:tarotit/res/features/core/view/profile/profile.dart';
+import 'package:tarotit/res/widgets/app_bar.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +13,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  Scaffold(
+      backgroundColor: codGray,
+      appBar: customAppbar(
+        isBold: true,
+        centerTitle: true,
+        text: 'Greetings Umar!', onTap: () {
+        
+      },),
+      body: Container(
       padding: EdgeInsets.symmetric(vertical: Dimensions.height20,
       horizontal: Dimensions.height20),
       child: Column(
@@ -20,12 +30,12 @@ class HomeScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              Text('Greetings Umar!',style: TextStyle(
-                fontSize: Dimensions.height25,
-                color: codGray,
-                fontWeight: FontWeight.bold
-              ),),
-              SizedBox(height: Dimensions.height20,),
+              // Text('Greetings Umar!',style: TextStyle(
+              //   fontSize: Dimensions.height25,
+              //   color: persimmon,
+              //   fontWeight: FontWeight.bold
+              // ),),
+              // SizedBox(height: Dimensions.height20,),
               SizedBox(
                 width: double.maxFinite,
                 child: Row(
@@ -33,14 +43,14 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        pushScreen(context, const BookingScreen());
+                        Get.to(()=>const BookingScreen());
                       },
                       child: SizedBox(
                         width: Dimensions.screenWidth*0.43,
                         child: Container(
                           padding: EdgeInsets.all(Dimensions.height10),
                           decoration: BoxDecoration(
-                            color: codGray,
+                            color: persimmon,
                             borderRadius: BorderRadius.circular(Dimensions.height15)
                           ),
                           child: Column(
@@ -65,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                                   Text('3',style: TextStyle(
                                         fontSize: Dimensions.height20,
                                         fontWeight: FontWeight.bold,
-                                        color: chateauGreen
+                                        color: emerald
                                       ),),
                                   SizedBox(width: Dimensions.height5,),
                     
@@ -220,8 +230,8 @@ class HomeScreen extends StatelessWidget {
           ),
                 SizedBox(
                   width: double.maxFinite,
-                  child: AppButton(text: 'Update profile', btnColor: codGray, onTap: () {
-                    
+                  child: AppButton(text: 'Update profile', btnColor: persimmon, onTap: () {
+                    Get.to(()=>const ProfilePage());
                   },),
                 )
           
@@ -229,6 +239,8 @@ class HomeScreen extends StatelessWidget {
 
         ],
       ),
+    )
+  ,
     );
   }
 }

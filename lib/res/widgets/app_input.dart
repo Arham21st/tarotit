@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
@@ -157,7 +156,7 @@ class AppInput extends StatelessWidget {
               child: Text(
                 label!,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: persimmon,
                   fontSize: Dimensions.height25/2,
                   // fontFamily: ralewaySemibold,
                 ),

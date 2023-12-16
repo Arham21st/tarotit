@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 
 class AppButton extends StatelessWidget {
@@ -9,6 +8,7 @@ class AppButton extends StatelessWidget {
     required this.btnColor,
     required this.onTap,
     this.loading=false,
+    this.padding=false,
     super.key,
   });
   final String text;
@@ -16,11 +16,12 @@ class AppButton extends StatelessWidget {
   final Color btnColor;
   final VoidCallback onTap;
   final bool loading;
+  final bool? padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: Dimensions.height20),
+      padding:  padding!? EdgeInsets.symmetric(horizontal:  Dimensions.height10)  :EdgeInsets.symmetric(horizontal:  Dimensions.height20),
       child: ElevatedButton(
         style: ButtonStyle(
           padding: MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: Dimensions.height15)),
@@ -39,7 +40,7 @@ class AppButton extends StatelessWidget {
         child: !loading? Text(
           text,
           style: TextStyle(
-            color: textColor??dinGray,
+            color: textColor??Colors.white,
             // fontFamily: interSemibold,
             fontSize: Dimensions.height15,
           ),

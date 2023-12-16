@@ -1,83 +1,144 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/constants/routes/routes.dart';
+import 'package:tarotit/res/constants/image_strings/image_strings.dart';
+import 'package:tarotit/res/constants/text_strings/text_strings.dart';
 import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
 import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
 import 'package:tarotit/res/features/authentication/view/signupAsSP/signup_as_sp.dart';
-import 'package:tarotit/res/navigator/navigator.dart';
+import 'package:tarotit/res/features/authentication/view/signupOption/widgets/fade_in_animation/animation_design.dart';
+import 'package:tarotit/res/features/authentication/view/signupOption/widgets/fade_in_animation/fade_in_animation_controller.dart';
+import 'package:tarotit/res/features/authentication/view/signupOption/widgets/fade_in_animation/fade_in_animation_model.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 
-class SignupOptionScreen extends StatelessWidget {
-  const SignupOptionScreen({super.key});
+class SigninSignupOption extends StatelessWidget {
+  const SigninSignupOption({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.only(bottom: Dimensions.height20,
-          top: Dimensions.height20*8),
-          decoration: const BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/images/opus_background.png',),
-              colorFilter: ColorFilter.mode(codGray, BlendMode.hardLight))
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Center(child: Image.asset("assets/images/opus_logo.png",
-                color: gallery,
-                width: Dimensions.height25*5,),),
-            //  SizedBox(height: Dimensions.height20*3,),
-             Column(
-               children: [
-                 SizedBox(
-                  width: Dimensions.screenWidth*0.5,
-                   child: AppButton(text: 'Sign up', btnColor: gallery, textColor: codGray, onTap: () {
-                     pushScreen(context, const SignupScreen());
-                   },),
-                 ),
-                 SizedBox(
-                  height: Dimensions.height20,
-                 ),
-                 SizedBox(
-                  width: Dimensions.screenWidth*0.5,
-                   child: AppButton(text: 'Login', btnColor: gallery, textColor: codGray, onTap: () {
-                     pushNavigator(context, routeName: loginRoute, widget: const LoginPage());
-                   },),
-                 ),
-               ],
-             ) ,
-      
-             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    pushScreen(context, const SignupAsServiceProvider());
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(Dimensions.height10),
-                    child: Text('SIGNUP',
-                    style: TextStyle(
-                      fontSize: Dimensions.height15,
-                      fontWeight: FontWeight.bold,
-                      color: persimmon
-                    ),),
-                  ),
+    final controller = Get.put(FadeInAnimationController());
+    controller.startAnimation();
+    
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: codGray,
+        body: Stack(
+          children: [
+            FadeInAnimationWidget(
+              durationInMs: 1500,
+              animate: AnimationPosition(
+                bottomAfter: 0,
+                bottombefore: -100,
+                leftAfter: 0,
+                leftBefore: 0,
+                rightAfter: 0,
+                rightBefore: 0,
+                topAfter: 0,
+                topBefore: 0,
+              ),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: Dimensions.height30
                 ),
-                Text('AS A SERVICE PROVIDER',
-                style: TextStyle(
-                    fontSize: Dimensions.height15,
-                    fontWeight: FontWeight.w600,
-                    color: linkWater
-                  ),)
-              ],
-             )  
-            ],
-          ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(
+                      // height: Dimensions.height20,
+                    ),
+                    Hero(
+                      tag: "welcome-image-tag",
+                      child: Image(image: const AssetImage(logo),height: Dimensions.height20*15,color: persimmon,)),
+                    //  Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: Dimensions.height20),
+                    //    child: Column(
+                    //     children: [
+                    //        Text(tWelcomeTitle,style: TextStyle(
+                    //         fontSize: Dimensions.height20,
+                    //         color: persimmon
+                    //       ),),
+                    //       SizedBox(
+                    //         height: Dimensions.height10,
+                    //       ),
+                    //       Text(tWelcomeSubTitle,
+                    //       textAlign: TextAlign.center,
+                    //       style: TextStyle(
+                    //         fontSize: Dimensions.height20,
+                    //         color: persimmon
+                    //       ),),
+                    //     ],
+                    //                    ),
+                    //  ),
+                    
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: Dimensions.height20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: AppButton(
+                        padding: true,
+                                  btnColor: persimmon,
+                                  onTap: () {
+                                  Get.to(()=>const LoginPage());
+                                },
+                                 text: tLogin.toUpperCase()),
+                              ),
+                              // SizedBox(width: Dimensions.height10,),
+                              Expanded(
+                                child: AppButton(
+                                  padding: true,
+                                  btnColor: persimmon,
+                                  onTap: () {
+                                  Get.to(()=>const SignupScreen());
+                                }, 
+                                 text: tSignup.toUpperCase()),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: Dimensions.height20*3,
+                        ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(const SignupAsServiceProvider());
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('SIGNUP',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: Dimensions.height15,
+                                      color: Colors.white
+                                    ),),
+                                    SizedBox(
+                                      width: Dimensions.height10,
+                                    ),
+                                    Text('AS A SERVICE PROVIDER',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: Dimensions.height15,
+                                      color: persimmon
+                                    ),),
+                                  ],
+                                ),
+                              ),
+                      ],
+                    ),
+                  
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
-    );
+      )
+      );
   }
 }

@@ -1,16 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tarotit/res/constants/colors/colors.dart';
-import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
-import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
-import 'package:tarotit/res/features/authentication/view/signupAsSP/signup_as_sp.dart';
-import 'package:tarotit/res/features/authentication/view/signupOption/signup_option.dart';
-import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
-import 'package:tarotit/res/features/core/view/chooseService/widgets/service_list.dart';
-import 'package:tarotit/res/layout/layout.dart';
-
-import 'constants/routes/routes.dart';
 import 'features/authentication/view/welcome/welcome_screen.dart';
 
 class MyApp extends StatelessWidget {
