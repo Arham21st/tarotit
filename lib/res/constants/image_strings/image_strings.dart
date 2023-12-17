@@ -12,3 +12,4 @@ const String welcomimage = "assets/images/welcom.png";
 const String logo = "assets/images/opus_logo.png";
 // const String googleLogo = "assets/images/google.png";
 const String profile = "assets/images/profile.jpg";
+const String customMarker = "assets/images/locate.png";
