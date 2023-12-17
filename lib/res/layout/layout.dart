@@ -1,17 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
+import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
+import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
 import 'package:tarotit/res/features/core/view/home/home.dart';
 import 'package:tarotit/res/features/core/view/notification/notification.dart';
 import 'package:tarotit/res/features/core/view/profile/profile.dart';
-import 'package:tarotit/res/widgets/app_bar.dart';
 import 'package:tarotit/res/widgets/bottom_nav_item.dart';
 
 class LayoutWithNavbar extends StatefulWidget {
-  const LayoutWithNavbar({
+   LayoutWithNavbar({
+    required this.user,
     super.key,
   });
-
+  bool? user=true;
   @override
   State<LayoutWithNavbar> createState() => _LayoutWithNavbarState();
 }
@@ -32,10 +35,6 @@ class _LayoutWithNavbarState extends State<LayoutWithNavbar> {
     if (location == 'Profile') {
       return 2;
     }
-
-    // if (location == 'Industry') {
-    //   return 3;
-    // }
 
     return 3;
   }
@@ -62,49 +61,60 @@ class _LayoutWithNavbarState extends State<LayoutWithNavbar> {
           currentIndex = 2;
         });
         break;
-      // case 3:
-      //   setState(() {
-      //     toggle = false;
-      //     currentIndex = 3;
-      //   });
-      //   break;
-      // case 4:
-      //   setState(() {
-      //     toggle = false;
-      //     currentIndex = 4;
-      //   });
     }
   }
 
-  List<String> navs = [
+  List<String> sPnavs = [
     'Home',
     'Notification',
     'Profile',
-    // 'Industry',
   ];
-  List<String> inActiveIcons = [
-    // homeBlue,
-    // programmeBlue,
-    // floorPlaneBlue,
-    // industryBlue,
-    // moreBlue,
+
+  List<String> uNavs = [
+    'Home',
+    'Booking',
+    'Profile',
   ];
-  List<IconData> activeIcons = [
+ 
+  List<IconData> uActiveIcons = [
     Icons.home_outlined,
-    Icons.notifications_none,
+    Icons.edit_document,
+    Icons.person_outline_outlined
+    
+  ];
+  List<IconData> spActiveIcons = [
+    Icons.home_outlined,
+    Icons.notifications_none_outlined,
     Icons.person_outline_outlined
     
   ];
   List<BottomNavigationBarItem> _buildNavList() {
-    return navs.asMap().entries.map((e) {
+    return widget.user!? uNavs.asMap().entries.map((e) {
       return BottomNavigationBarItem(
         label: '',
         icon: BottomNavItem(
           currentIndex: currentIndex,
           icon: Icon(
-            activeIcons[e.key],
+            uActiveIcons[e.key],
             color: currentIndex == e.key
-                ? codGray
+                ? persimmon
+                : Colors.grey.shade500,
+            size: Dimensions.height20,
+          ),
+          name: e.value,
+          index: e.key,
+        ),
+      );
+    }).toList():
+    sPnavs.asMap().entries.map((e) {
+      return BottomNavigationBarItem(
+        label: '',
+        icon: BottomNavItem(
+          currentIndex: currentIndex,
+          icon: Icon(
+            spActiveIcons[e.key],
+            color: currentIndex == e.key
+                ? persimmon
                 : Colors.grey.shade500,
             size: Dimensions.height20,
           ),
@@ -118,30 +128,23 @@ class _LayoutWithNavbarState extends State<LayoutWithNavbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bottombarScafoldColor,
-      appBar: customAppbar(text: currentIndex==0?'Home':currentIndex==1?'Notification':'Profile', onTap: () {
-        
-      },
-      centerTitle: true,
-      isBold: true,
-
-      ),
-      body: currentIndex == 0?
+      body: 
+      widget.user!?
+      currentIndex == 0?
+      const ChooseService():
+      currentIndex==1?
+       const BookingScreen()
+      : const ProfilePage():
+      currentIndex == 0?
       const HomeScreen():
       currentIndex==1?
-      const NotificationScreen()
+       NotificationScreen()
       : const ProfilePage(),
-          // ? const HomeScreen()
-          // : currentIndex == 1
-          //     ? const ProgrammeScreen()
-          //     : currentIndex == 2
-          //         ? const FloorPlan()
-          //         : const IndustryList(),
       extendBody: false,
       primary: true,
       resizeToAvoidBottomInset: true,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: codGray.withOpacity(0.9),
           showSelectedLabels: false,
           currentIndex: _calculateSelectedIndex(),
           onTap: _onItemTapped,

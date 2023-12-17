@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/features/authentication/controllers/firebase/firebase_controller.dart';
-import 'package:tarotit/res/features/authentication/view/login/login_screen.dart';
 import 'package:tarotit/res/features/core/view/chooseService/widgets/service_list.dart';
 import 'package:tarotit/res/features/core/view/chooseService/widgets/service_widget.dart';
 import 'package:tarotit/res/navigator/navigator.dart';
@@ -19,23 +18,23 @@ class _ChooseServiceState extends State<ChooseService> {
   @override
   Widget build(BuildContext context) {
     final serviceData =[
-      {'service_image':'assets/images/carpenter.png','service_title':'Carpenter','service_color':Colors.purple.withOpacity(0.15)},
-      {'service_image':'assets/images/electrician.png','service_title':'Electrician','service_color':Colors.yellow.withOpacity(0.15)},
-      {'service_image':'assets/images/plumber.png','service_title':'Plumber','service_color':Colors.lightGreen.withOpacity(0.15)},
-      {'service_image':'assets/images/gardener.png','service_title':'Gardener','service_color':Colors.cyanAccent.withOpacity(0.15)},
-      {'service_image':'assets/images/masonry.png','service_title':'Masonry','service_color':Colors.pink.withOpacity(0.15)},
-      {'service_image':'assets/images/painter.png','service_title':'Painter','service_color':Colors.orange.withOpacity(0.15)},
-      {'service_image':'assets/images/actechnician.png','service_title':'AC Technician','service_color':Colors.blueAccent.withOpacity(0.15)},
-      {'service_image':'assets/images/cctv.png','service_title':'CCTV','service_color':Colors.pinkAccent.withOpacity(0.25)},
+      {'service_image':'assets/images/carpenter.png','service_title':'Carpenter','service_color':Colors.purple.withOpacity(0.5),'text_color':Colors.purple.shade600,},
+      {'service_image':'assets/images/electrician.png','service_title':'Electrician','service_color':Colors.yellow.withOpacity(0.35),'text_color':Colors.yellow.shade600,},
+      {'service_image':'assets/images/plumber.png','service_title':'Plumber','service_color':Colors.lightGreen.withOpacity(0.5),'text_color':Colors.lightGreen.shade600,},
+      {'service_image':'assets/images/gardener.png','service_title':'Gardener','service_color':Colors.cyanAccent.withOpacity(0.35),'text_color':Colors.cyanAccent.shade400,},
+      {'service_image':'assets/images/masonry.png','service_title':'Masonry','service_color':Colors.pink.withOpacity(0.35),'text_color':Colors.pink.shade600,},
+      {'service_image':'assets/images/painter.png','service_title':'Painter','service_color':Colors.orange.withOpacity(0.35),'text_color':Colors.orange.shade600,},
+      {'service_image':'assets/images/actechnician.png','service_title':'AC Technician','service_color':Colors.blueAccent.withOpacity(0.5),'text_color':Colors.blueAccent.shade400,},
+      {'service_image':'assets/images/cctv.png','service_title':'CCTV','service_color':Colors.pinkAccent.withOpacity(0.35),'text_color':Colors.pinkAccent.shade400,},
     ] ;
     return Scaffold(
+      backgroundColor: codGray,
       appBar: customAppbar(onTap: () {
-        FirebaseController.instance.logoutUser();
-        Get.offAll(()=>const LoginPage());
+
       },
 
       isBold: true,
-      showBackButton: true,
+      showBackButton: false,
       text: 'Choose a service',
       centerTitle: true),
       body: Container(
@@ -50,7 +49,7 @@ class _ChooseServiceState extends State<ChooseService> {
           crossAxisCount: 3), itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                pushScreen(context,  ServiceListScreen(service: serviceData[index]['service_title'].toString(),));
+                Get.to(()=>ServiceListScreen(service: serviceData[index]['service_title'].toString(),));
               },
               child: ServiceWidget(serviceData: serviceData[index]));
           },),

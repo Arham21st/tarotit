@@ -4,7 +4,9 @@ import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/features/authentication/controllers/signin/signin_controller.dart';
 import 'package:tarotit/res/features/authentication/view/signup/signup_screen.dart';
+import 'package:tarotit/res/features/core/view/chooseService/choose_a_service.dart';
 import 'package:tarotit/res/features/core/view/home/home.dart';
+import 'package:tarotit/res/layout/layout.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                         text: 'Login', btnColor: persimmon, onTap: () {
                           SignInController.instance.signIn(controller.email.text.trim(), 
                           controller.password.text.trim());
-                          Get.offAll(()=>const HomeScreen());
+                          Get.offAll(()=> LayoutWithNavbar(user: true,));
                       },),
                     ),
                   ],

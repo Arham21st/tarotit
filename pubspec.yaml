@@ -45,6 +45,8 @@ dependencies:
   firebase_auth: ^4.14.1
   cloud_firestore: ^4.13.3
   fluttertoast: ^8.2.4
+  flutter_svg: ^2.0.9
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

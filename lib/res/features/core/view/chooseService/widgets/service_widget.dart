@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 
 class ServiceWidget extends StatelessWidget {
@@ -21,6 +22,7 @@ class ServiceWidget extends StatelessWidget {
           ),
           SizedBox(height: Dimensions.height5,),
           Text(serviceData['service_title'],style: TextStyle(
+            color: serviceData['text_color'],
             fontSize: Dimensions.height15,
             fontWeight: FontWeight.bold
           ),)

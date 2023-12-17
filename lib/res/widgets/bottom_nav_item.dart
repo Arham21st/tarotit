@@ -34,7 +34,7 @@ class BottomNavItem extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
               color: currentIndex == index
-                  ? codGray
+                  ? persimmon
                   : Colors.grey.shade500,
               fontSize: Dimensions.height10,
               fontWeight: FontWeight.w600),

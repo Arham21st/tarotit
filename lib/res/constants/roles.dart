@@ -1,0 +1,5 @@
+enum USERTYPE {
+  user,
+  serviceProvider,
+  
+}

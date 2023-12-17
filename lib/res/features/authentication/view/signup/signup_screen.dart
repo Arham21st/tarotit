@@ -59,7 +59,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(left: Dimensions.height20),
-                            child:  Text( "Sign Up",style: TextStyle(fontSize: Dimensions.height25),)
+                            child:  Text( "Sign Up",style: TextStyle(fontSize: Dimensions.height25,
+                            color: persimmon)
+                            ,)
                           )
                         ],
                       ),
@@ -92,7 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           loading: loading,
                           
                           
-                          text: 'Sign up',btnColor: codGray, onTap: () {
+                          text: 'Sign up',btnColor: persimmon, onTap: () {
 
                             setState(() {
                               loading= true;

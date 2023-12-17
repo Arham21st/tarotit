@@ -105,7 +105,7 @@ class SigninSignupOption extends StatelessWidget {
                         ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(const SignupAsServiceProvider());
+                                  Get.to(()=>const SignupAsServiceProvider());
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,

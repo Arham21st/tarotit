@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
-import 'package:tarotit/res/features/core/view/home/home.dart';
+import 'package:tarotit/res/layout/layout.dart';
 import 'package:tarotit/res/widgets/app_button.dart';
 import 'package:tarotit/res/widgets/app_input.dart';
 
@@ -61,7 +61,7 @@ class SignupAsServiceProvider extends StatelessWidget {
                       child: AppButton(
                         
                         text: 'Sign up',btnColor: persimmon, onTap: () {
-                          Get.offAll(()=>HomeScreen());
+                          Get.offAll(()=> LayoutWithNavbar(user: false,));
                         },),
                     ),
                   ],

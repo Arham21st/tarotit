@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/navigator/navigator.dart';
 import 'package:tarotit/res/widgets/app_bar.dart';
@@ -10,6 +11,20 @@ class ServiceListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final electricianList = [
+      {
+        'name': 'Imran Ahmad',
+        'experience': 3,
+        'rating': '5',
+        'city': 'Karachi',
+        'rank': 'Top 5',
+      },
+      {
+        'name': 'Imran Ahmad',
+        'experience': 3,
+        'rating': '5',
+        'city': 'Karachi',
+        'rank': 'Top 5',
+      },
       {
         'name': 'Imran Ahmad',
         'experience': 3,
@@ -33,6 +48,7 @@ class ServiceListScreen extends StatelessWidget {
       }
     ];
     return Scaffold(
+      backgroundColor: codGray,
       appBar: customAppbar(onTap: () {
         popNavigator(context);
       },
@@ -77,7 +93,7 @@ class ServiceListScreen extends StatelessWidget {
                           Text('${electricianList[index]['experience'].toString()} years experience',style: TextStyle(fontSize: Dimensions.height15),)
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: Dimensions.height10,),
                       Row(
                         children: [
                           Container(
@@ -91,12 +107,12 @@ class ServiceListScreen extends StatelessWidget {
                           SizedBox(width: Dimensions.height10,),
                           Row(
                             children: List.generate(electricianList[index]['experience'] as int, (index) {
-                              return Icon(Icons.star);
+                              return Icon(Icons.star,size: Dimensions.height15,);
                             }),
                           )
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: Dimensions.height10,),
                       Row(
                         children: [
                           Container(
@@ -111,7 +127,7 @@ class ServiceListScreen extends StatelessWidget {
                           Text('Karachi',style: TextStyle(fontSize: Dimensions.height15),)
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: Dimensions.height10,),
                       Row(
                         children: [
                           Container(
@@ -126,6 +142,29 @@ class ServiceListScreen extends StatelessWidget {
                           Text('Ranked in top five Electrician',style: TextStyle(fontSize: Dimensions.height15),)
                         ],
                       ),
+
+                      SizedBox(height: Dimensions.height15,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: Dimensions.height10) ,
+                      child: Text('Cancel',style: TextStyle(
+                    fontSize: Dimensions.height20,
+                    fontWeight: FontWeight.bold,
+                    color: cinnabar
+                  ),),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: Dimensions.height10) ,
+                      child: Text('Book now',style: TextStyle(
+                    fontSize: Dimensions.height20,
+                    fontWeight: FontWeight.bold,
+                    color: chateauGreen
+                  ),),
+                      )
+                    ],
+                  )
                     ],
                   ),
                 ),

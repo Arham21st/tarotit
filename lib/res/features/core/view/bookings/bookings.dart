@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/navigator/navigator.dart';
 import 'package:tarotit/res/widgets/app_bar.dart';
@@ -29,6 +30,7 @@ class BookingScreen extends StatelessWidget {
       }
     ];
     return Scaffold(
+      backgroundColor: codGray,
       appBar: customAppbar(text: 'Bookings', onTap: () {
         popNavigator(context);
       },
@@ -101,10 +103,10 @@ class BookingScreen extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: Dimensions.height10) ,
-                      child: Text('Contact',style: TextStyle(
+                      child: Text('Cancel',style: TextStyle(
                     fontSize: Dimensions.height15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purpleAccent
+                    color: cinnabar
                   ),),
                       ),
                       Container(
@@ -112,7 +114,7 @@ class BookingScreen extends StatelessWidget {
                       child: Text('Confirm Booking',style: TextStyle(
                     fontSize: Dimensions.height15,
                     fontWeight: FontWeight.bold,
-                    color: Colors.purpleAccent
+                    color: chateauGreen
                   ),),
                       )
                     ],

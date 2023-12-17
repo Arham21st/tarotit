@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/features/core/view/bookings/bookings.dart';
-import 'package:tarotit/res/features/core/view/profile/profile.dart';
 import 'package:tarotit/res/widgets/app_bar.dart';
-import 'package:tarotit/res/widgets/app_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,221 +20,222 @@ class HomeScreen extends StatelessWidget {
         
       },),
       body: Container(
-      padding: EdgeInsets.symmetric(vertical: Dimensions.height20,
-      horizontal: Dimensions.height20),
+        height: Dimensions.screenHeight*0.8,
+      padding: EdgeInsets.all( Dimensions.height20,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            children: [
-              // Text('Greetings Umar!',style: TextStyle(
-              //   fontSize: Dimensions.height25,
-              //   color: persimmon,
-              //   fontWeight: FontWeight.bold
-              // ),),
-              // SizedBox(height: Dimensions.height20,),
-              SizedBox(
-                width: double.maxFinite,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(()=>const BookingScreen());
-                      },
-                      child: SizedBox(
-                        width: Dimensions.screenWidth*0.43,
-                        child: Container(
-                          padding: EdgeInsets.all(Dimensions.height10),
-                          decoration: BoxDecoration(
-                            color: persimmon,
-                            borderRadius: BorderRadius.circular(Dimensions.height15)
-                          ),
-                          child: Column(
-                            children:  [
-                              Row(
-                                children: [
-                                  const Icon(CupertinoIcons.briefcase,color: dinGray,
-                                  ),
-                                  SizedBox(width: Dimensions.height10,),
-                                  Text('Bookings',style: TextStyle(
-                                    fontSize: Dimensions.height20,
-                                    color: dinGray
-                                  ),),
-                                ],
-                              ),
-                              SizedBox(
-                                height: Dimensions.height20,
-                              ),
-                              Row(
-                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,                         
-                                 children: [
-                                  Text('3',style: TextStyle(
-                                        fontSize: Dimensions.height20,
-                                        fontWeight: FontWeight.bold,
-                                        color: emerald
-                                      ),),
-                                  SizedBox(width: Dimensions.height5,),
-                    
-                                      Text('active jobs',style: TextStyle(
-                                        fontSize: Dimensions.height35/2,
-                                        color: dinGray
-                                      ),),
-                                ],
-                              ),
-                            ],
-                          ),
+          GestureDetector(
+            onTap: () {
+              
+              Get.to(()=>const BookingScreen());
+            },
+            child: SizedBox(
+            height: Dimensions.screenHeight*0.15,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: Dimensions.height15,
+              horizontal: Dimensions.height30),
+                decoration: BoxDecoration(
+                  color: persimmon,
+                  borderRadius: BorderRadius.circular(Dimensions.height15/2)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children:  [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                         Icon(CupertinoIcons.briefcase,color: dinGray,
+                        size: Dimensions.height30,
                         ),
-                                        
-                      ),
+                        SizedBox(width: Dimensions.height10,),
+                        Text('Bookings',style: TextStyle(
+                          fontSize: Dimensions.height25,
+                          color: dinGray
+                        ),),
+                      ],
                     ),
-                    SizedBox(
-                      width: Dimensions.screenWidth*0.43,
-                      child: Container(
-                        padding: EdgeInsets.all(Dimensions.height10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(Dimensions.height15)
-                        ),
-                        child: Column(
-                          children:  [
-                            Row(
-                              children: [
-                                const Icon(Icons.history_edu_outlined,color: codGray,
-                                ),
-                                SizedBox(width: Dimensions.height10,),
-                                Text('History',style: TextStyle(
-                                  fontSize: Dimensions.height20,
-                                  color: codGray
-                                ),),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Dimensions.height20,
-                            ),
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,                         
-                               children: [
-                                Text('4',style: TextStyle(
-                                      fontSize: Dimensions.height20,
-                                      fontWeight: FontWeight.bold,
-                                      color: casablanca
-                                    ),),
-                                SizedBox(width: Dimensions.height5,),
-
-                                    Text('complete jobs',style: TextStyle(
-                                      fontSize: Dimensions.height35/2,
-                                      color: codGray
-                                    ),),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                                      
-                    )
-                  
+                    Text.rich(
+                TextSpan(
+                  style: TextStyle(
+                      fontSize: Dimensions.height35/2,
+                      color: Colors.white
+                    ),
+                  children: const [
+                    TextSpan(text: 'You have '),
+                    TextSpan(
+                      text: '4 ',
+                      style: TextStyle(
+                        color: emerald,
+                        fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: 'active jobs right now.'),
                   ],
                 ),
               ),
-              SizedBox(height: Dimensions.height20,),
-              SizedBox(
-                      width: Dimensions.screenWidth*0.7,
-                      child: Container(
-                        padding: EdgeInsets.all(Dimensions.height10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(Dimensions.height15)
-                        ),
-                        child: Column(
-                          children:  [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.bookmark_border,color: codGray,
-                                size: Dimensions.height35,
-                                ),
-                                SizedBox(width: Dimensions.height10,),
-                                Text('Rating',style: TextStyle(
-                                  fontSize: Dimensions.height25,
-                                  color: codGray
-                                ),),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Dimensions.height20,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('4.0',style: TextStyle(
-                                  fontSize: Dimensions.height20
-                                ),),
-                                SizedBox(width: Dimensions.height10,),
-                                Row(
-                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,                         
-                                   children: List.generate(5, (index) {
-                                     return Icon(Icons.star,);
-                                   }),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                                      
-                    ),
-                    SizedBox(height: Dimensions.height20,),
-              SizedBox(
-                      width: Dimensions.screenWidth*0.7,
-                      child: Container(
-                        padding: EdgeInsets.all(Dimensions.height10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(Dimensions.height15)
-                        ),
-                        child: Column(
-                          children:  [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(CupertinoIcons.layers_alt,color: codGray,
-                                size: Dimensions.height35,
-                                ),
-                                SizedBox(width: Dimensions.height10,),
-                                Text('Ranking',style: TextStyle(
-                                  fontSize: Dimensions.height25,
-                                  color: codGray
-                                ),),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Dimensions.height20,
-                            ),
-                            Text('You are ranked top 10 out of all electrician',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: Dimensions.height20,
-                              color: codGray
-                            ),)
-                          ],
-                        ),
-                      ),
-                                      
-                    ),
-                    SizedBox(height: Dimensions.height20,),
-            ],
-          ),
-                SizedBox(
-                  width: double.maxFinite,
-                  child: AppButton(text: 'Update profile', btnColor: persimmon, onTap: () {
-                    Get.to(()=>const ProfilePage());
-                  },),
-                )
+                  ],
+                ),
+              ),
+                              
+            ),
           
-              
+          ),
+          
+          SizedBox(
+            height: Dimensions.screenHeight*0.15,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: Dimensions.height15,
+              horizontal: Dimensions.height30),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(Dimensions.height15/2)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children:  [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.history_edu_outlined,color: codGray,
+                      size: Dimensions.height30,
+                      ),
+                      SizedBox(width: Dimensions.height10,),
+                      Text('History',style: TextStyle(
+                        fontSize: Dimensions.height25,
+                        color: codGray
+                      ),),
+                    ],
+                  ),
+                  SizedBox(
+                    height: Dimensions.height20,
+                  ),
+                  Text.rich(
+                    textAlign: TextAlign.center,
+                TextSpan(
+                  style: TextStyle(
+                              fontSize: Dimensions.height35/2,
+                              color: codGray
+                            ),
+                  children: const [
+                    TextSpan(text: 'You have successfully completed '),
+                    TextSpan(
+                      text: '4 ',
+                      style: TextStyle(
+                        color: casablanca,
+                        fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: 'jobs'),
+                  ],
+                ),
+              ),
+                ],
+              ),
+            ),
+                            
+          ),
+          SizedBox(
+                  height: Dimensions.screenHeight*0.15,
 
+                  child: Container(
+                    padding: EdgeInsets.all(Dimensions.height15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(Dimensions.height15/2)
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children:  [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.bookmark_border,color: codGray,
+                            size: Dimensions.height30,
+                            ),
+                            SizedBox(width: Dimensions.height10,),
+                            Text('Rating',style: TextStyle(
+                              fontSize: Dimensions.height25,
+                              color: codGray
+                            ),),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('4.0',style: TextStyle(
+                              color: codGray,
+                              fontSize: Dimensions.height35/2
+                            ),),
+                            SizedBox(width: Dimensions.height10,),
+                            Row(
+                               children: List.generate(4, (index) {
+                                 return const Icon(Icons.star,
+                                 color: codGray,);
+                               }),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                                  
+                ),
+          SizedBox(
+                  height: Dimensions.screenHeight*0.15,
+                  child: Container(
+                    padding: EdgeInsets.all(Dimensions.height15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(Dimensions.height15/2)
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children:  [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(CupertinoIcons.layers_alt,color: codGray,
+                            size: Dimensions.height30,
+                            ),
+                            SizedBox(width: Dimensions.height10,),
+                            Text('Ranking',style: TextStyle(
+                              fontSize: Dimensions.height25,
+                              color: codGray
+                            ),),
+                          ],
+                        ),
+                        Text.rich(
+                    textAlign: TextAlign.center,
+                TextSpan(
+                  style: TextStyle(
+                              fontSize: Dimensions.height35/2,
+                              color: codGray
+                            ),
+                  children:  [
+                    const TextSpan(text: 'You are ranked '),
+                    const TextSpan(
+                      text: 'top 10 ',
+                      style: TextStyle(
+                        color: emerald,
+                        fontWeight: FontWeight.bold),
+                    ),
+                    const TextSpan(text: 'out of all '),
+                    TextSpan(
+                      text: 'electricians'.toUpperCase(),
+                      style: const TextStyle(
+                        color: emerald,
+                        fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+                      ],
+                    ),
+                  ),
+                                  
+                ),
         ],
       ),
     )

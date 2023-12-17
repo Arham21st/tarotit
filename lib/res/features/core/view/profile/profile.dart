@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tarotit/res/constants/colors/colors.dart';
 import 'package:tarotit/res/constants/dimensions/app_dimensions.dart';
 import 'package:tarotit/res/widgets/app_bar.dart';
@@ -75,12 +74,13 @@ class _ProfilePageState extends State<ProfilePage> {
     // UserModel user = Provider.of<UserModel>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: codGray,
       appBar: customAppbar(
-        showBackButton: true,
+        logout: true,
+        isBold: true,
+        showBackButton: false,
         centerTitle: true,
         text: 'Profile', onTap: () {
-        Get.back();
       },),
       body: SingleChildScrollView(
         child: Container(
@@ -105,12 +105,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   SizedBox(height: Dimensions.height10,),
                   Text('Umar Sufiyan',
                   style: TextStyle(
+                    color: alto,
                     fontSize: Dimensions.height35/2,
                     fontWeight: FontWeight.w600
                   ),),
                   SizedBox(height: Dimensions.height10,),
                   Text('umarsufiyan123@gmail.com',
                   style: TextStyle(
+                    color: alto,
                     fontSize: Dimensions.height15,
                     fontWeight: FontWeight.w500
                   ),)
@@ -159,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
               SizedBox(
                 width: double.maxFinite,
-                child: AppButton(text: 'Save changes', btnColor: codGray, onTap:() {
+                child: AppButton(text: 'Save changes', btnColor: persimmon, onTap:() {
                   
                 },),
               )
